@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAR Faculty Portal | MyMAR.com</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body>
+    <section id="faculty">
+        <h1 class="h-primary center">Faculty Portal</h1>
+        <div id="faculty-box">
+            <h2>Submissions:</h2>
+            <ul>
+                <!-- {% for student, submission in submissions %}
+                <li>
+                    <a href="{{ url_for('download_file', filename=submission.file) }}">DOWNLOAD</a>
+                </li>
+                {% endfor %} -->
+                {% for student, submission in submissions %}
+  <tr>
+    <td>{{ student }}</td>
+    <td>{{ submission.activity }}</td>
+    <td>{{ submission.duration }}</td>
+    <td>{{ submission.points }}</td>
+    <td>{{ submission.participated }}</td>
+    <td>{{ submission.t_points }}</td>
+    <td><a href="{{ url_for('download_file', filename=submission.file) }}">Download</a></td>
+  </tr>
+{% endfor %}
+            </ul>
+            <form action="" method="post">
+                <label for="students">Select students to notify:</label>
+                <select name="students" id="students" multiple>
+                    {% for student in students %}
+                    <option value="{{ student }}">{{ student }}</option>
+                    {% endfor %}
+                </select>
+                <label for="message">Message:</label>
+                <textarea name="message" id="message" cols="30" rows="10"></textarea>
+                <button class="btn">Notify</button>
+            </form>
+        </div>
+    </section>
+    {% extends 'base.html' %}
+
+{% block content %}
+  <h1>Faculty Page</h1>
+  <form method="post" action="{{ url_for('notify') }}">
+    <label for="students">Select students to notify:</label>
+    <select name="students" multiple>
+      {% for student, submission in submissions %}
+        <option value="{{ student }}">{{ student }}</option>
+      {% endfor %}
+    </select>
+    <br>
+    <label for="message">Message:</label>
+    <textarea name="message"></textarea>
+    <br>
+    <input type="submit" value="Notify">
+  </form>
+  <table>
+    <thead>
+      <tr>
+        <th>Student</th>
+        <th>Serial No.</th>
+        <th>Activity</th>
+        <th>Duration</th>
+        <th>Points</th>
+        <th>Participated</th>
+        <th>Total Points</th>
+        <th>File</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for student, submission in submissions %}
+        <tr>
+          <td>{{ student }}</td>
+          <td>{{ submission.serial_no }}</td>
+          <td>{{ submission.activity }}</td>
+          <td>{{ submission.duration }}</td>
+          <td>{{ submission.points }}</td>
+          <td>{{ submission.participated }}</td>
+          <td>{{ submission.t_points }}</td>
+          <td><a href="{{ url_for('download_file', filename=submission.file) }}">Download</a></td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
+</body>
+</html>

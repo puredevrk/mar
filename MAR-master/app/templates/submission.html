@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAR Submission Portal | MyMAR.com</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body>
+    <section id="submission">
+        <h1 class="h-primary-submission center">Submission Portal</h1>
+        <div id="submission-box">
+            <form action="" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="serial">Serial No.: </label>
+                    <input type="number" name="serial" id="serial" placeholder="Enter serial no.">
+                </div>
+                <div class="form-group">
+                    <label for="activity">Activity participated: </label>
+                    <textarea name="activity" id="activity" cols="30" rows="10" placeholder="Enter the activity name you participated"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="duration">Duration: </label>
+                    <input type="text" name="duration" id="duration" placeholder="Enter the duration of mar point">
+                </div>
+                <div class="form-group">
+                    <label for="points">Points: </label>
+                    <input type="number" name="points" id="points" placeholder="Enter the points dedicated for the activity">
+                </div>
+                <div class="form-group">
+                    <label for="participated">No. of times participated: </label>
+                    <input type="number" name="participated" id="participated" placeholder="Enter the no. of times participated">
+                </div>
+                <div class="form-group">
+                    <label for="t_points">Total acquired points: </label>
+                    <input type="number" name="t_points" id="t_points" placeholder="Enter the total points acquired">
+                </div>
+                <div class="form-group">
+                    <label for="file">Upload PDF file: </label>
+                    <input type="file" name="file" id="file">
+                </div>
+                <button class="btn-submission">Submit</button>
+            </form>
+        </div>
+    </section>
+</body>
+</html>

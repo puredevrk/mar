@@ -1,0 +1,13 @@
+<form action="" method="post">
+    <label for="students">Select students to notify:</label>
+    <select name="students" multiple>
+      {% for student in students %}
+        <option value="{{ student }}">{{ student }}</option>
+      {% endfor %}
+    </select>
+    <br>
+    <label for="message">Message:</label>
+    <textarea name="message"></textarea>
+    <br>
+    <input type="submit" value="Notify">
+  </form>
